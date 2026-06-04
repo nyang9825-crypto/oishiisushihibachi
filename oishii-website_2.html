@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oishii Japanese Restaurant — Camden, DE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#110e0b;
+  --paper:#faf7f2;
+  --warm:#f2ece0;
+  --gold:#c8a84b;
+  --gold-light:#e8d08a;
+  --gold-dark:#8a6820;
+  --muted:#7a6f60;
+  --red:#b02820;
+  --surface:#fff;
+  --radius:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+
+/* ═══════════════════════ NAV ═══════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2.5rem;
+  background:rgba(17,14,11,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,168,75,0.2);
+  transition:all 0.3s;
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#fff;letter-spacing:0.05em;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:12.5px;font-weight:500;padding:0.5rem 1.2rem;border-radius:999px;border:1.5px solid var(--gold);color:var(--gold);text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+.nav-open-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.6);margin-left:1.5rem}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.85)}}
+
+/* ═══════════════════════ HERO ═══════════════════════ */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  background:linear-gradient(160deg,rgba(17,14,11,0.82) 0%,rgba(17,14,11,0.75) 100%), url('https://www.oishiisushihibachi.com/images/hero-interior.jpg') center/cover no-repeat;
+  position:relative;overflow:hidden;
+  padding:8rem 2rem 4rem;
+}
+.hero-texture{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(200,168,75,0.03) 60px,rgba(200,168,75,0.03) 61px),
+    repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,168,75,0.03) 60px,rgba(200,168,75,0.03) 61px);
+}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(200,168,75,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-tag{font-size:11px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;animation:fadeUp 0.8s ease both}
+#hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;color:#fff;line-height:1;letter-spacing:-0.01em;margin-bottom:1rem;animation:fadeUp 0.8s 0.1s ease both}
+#hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);margin-bottom:2.5rem;letter-spacing:0.05em;animation:fadeUp 0.8s 0.2s ease both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s 0.3s ease both}
+.btn-primary{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:0.85rem 2rem;border-radius:999px;background:var(--gold);color:var(--ink);text-decoration:none;border:none;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:0.85rem 2rem;border-radius:999px;background:transparent;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-info{margin-top:4rem;display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s 0.4s ease both}
+.hero-info-item{text-align:center}
+.hero-info-item .label{font-size:10.5px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.hero-info-item .value{font-size:14px;color:rgba(255,255,255,0.8);font-weight:400}
+.hero-info-item .value a{color:var(--gold);text-decoration:none}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.3);font-size:11px;letter-spacing:0.1em;animation:fadeUp 1s 0.8s ease both}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(200,168,75,0.4),transparent);animation:scrollLine 1.8s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════ STATUS BAR ═══════════════════════ */
+.status-bar{
+  background:var(--ink);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;gap:3rem;
+  flex-wrap:wrap;padding:1rem 2rem;
+  font-size:13px;
+}
+.status-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.65)}
+.status-item strong{color:var(--gold)}
+.status-open{color:#6fcf97;font-weight:500;display:flex;align-items:center;gap:6px}
+
+/* ═══════════════════════ SECTIONS SHARED ═══════════════════════ */
+section{padding:5rem 2rem}
+.section-tag{font-size:10.5px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;color:var(--ink);margin-bottom:1rem}
+.section-sub{font-size:15px;color:var(--muted);font-weight:300;max-width:540px;line-height:1.7}
+.section-header{max-width:1100px;margin:0 auto 3rem}
+
+/* ═══════════════════════ SPECIALS BANNER ═══════════════════════ */
+#specials{background:var(--ink);padding:3rem 2rem}
+.specials-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.specials-text .tag{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+.specials-text h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#fff}
+.specials-text p{font-size:14px;color:rgba(255,255,255,0.5);margin-top:0.3rem}
+.specials-items{display:flex;gap:1rem;flex-wrap:wrap}
+.special-chip{background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.25);border-radius:999px;padding:0.45rem 1.1rem;font-size:13px;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:6px}
+.special-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* ═══════════════════════ MENU ═══════════════════════ */
+#menu{background:var(--paper)}
+.menu-controls{max-width:1100px;margin:0 auto 2.5rem;display:flex;flex-direction:column;gap:1rem}
+.filter-bar{display:flex;gap:0.4rem;flex-wrap:wrap}
+.filter-btn{font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:400;padding:0.4rem 1rem;border-radius:999px;border:1px solid rgba(0,0,0,0.15);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.18s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold-dark)}
+.filter-btn.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.search-row{display:flex;gap:0.75rem;align-items:center}
+.search-box{flex:1;max-width:380px;font-family:'DM Sans',sans-serif;font-size:14px;padding:0.6rem 1.1rem;border-radius:999px;border:1px solid rgba(0,0,0,0.15);background:#fff;color:var(--ink);outline:none;transition:border-color 0.18s}
+.search-box:focus{border-color:var(--gold)}
+.search-box::placeholder{color:var(--muted)}
+.menu-root{max-width:1100px;margin:0 auto}
+.cat-section{margin-bottom:3rem}
+.cat-header{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.5rem}
+.cat-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink)}
+.cat-note{font-size:11.5px;color:var(--muted)}
+.cat-divider{border:none;border-top:1px solid rgba(0,0,0,0.08);margin-bottom:1rem}
+.cat-sub{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:1rem}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.9rem}
+.menu-card{background:#fff;border-radius:var(--radius);border:1px solid rgba(0,0,0,0.06);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:0.3rem;transition:transform 0.18s,box-shadow 0.18s;animation:fadeUp 0.3s ease both;cursor:pointer}
+.menu-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.08)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;line-height:1.3;color:var(--ink)}
+.card-price{font-size:0.95rem;font-weight:500;color:var(--gold-dark);white-space:nowrap;flex-shrink:0}
+.card-desc{font-size:11.5px;color:var(--muted);line-height:1.55}
+.badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.2rem}
+.badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:999px}
+.b-spicy{background:#fde8e8;color:#902020}
+.b-pop{background:#fef3cd;color:#7a5a00}
+.b-veg{background:#e4f4e8;color:#2a6b3a}
+.b-prem{background:#ede8f8;color:#4a2a7a}
+.b-lunch{background:#e8f3fb;color:#1a4f7a}
+.menu-empty{text-align:center;padding:3rem;color:var(--muted);display:none}
+
+/* ═══════════════════════ HOURS ═══════════════════════ */
+#hours{background:var(--warm)}
+.hours-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.hours-table td{padding:0.6rem 0;font-size:14px;border-bottom:1px solid rgba(0,0,0,0.06)}
+.hours-table td:first-child{color:var(--muted);font-weight:400}
+.hours-table td:last-child{text-align:right;font-weight:500}
+.hours-table tr.today td{color:var(--gold-dark);font-weight:500}
+.hours-table tr.today td:first-child::after{content:' ← today';font-size:10px;color:var(--gold);font-weight:400}
+.lunch-note{margin-top:1.5rem;background:#fff8e8;border:1px solid #e8d28a;border-radius:var(--radius);padding:1rem 1.2rem;font-size:13px;color:#7a5a00;line-height:1.6}
+.map-placeholder{background:var(--ink);border-radius:var(--radius);overflow:hidden;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:rgba(255,255,255,0.5);text-align:center;padding:2rem;position:relative}
+.map-placeholder::before{content:'📍';font-size:3rem;margin-bottom:0.5rem}
+.map-placeholder h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;font-weight:300}
+.map-placeholder p{font-size:13px;line-height:1.6}
+.map-placeholder a{color:var(--gold);text-decoration:none;font-size:13px;margin-top:0.5rem;display:inline-block}
+
+/* ═══════════════════════ RESERVATION ═══════════════════════ */
+#reservations{background:var(--ink)}
+.res-inner{max-width:680px;margin:0 auto;text-align:center}
+.res-inner .section-title{color:#fff}
+.res-inner .section-sub{color:rgba(255,255,255,0.5);margin:0 auto 2.5rem}
+.res-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group.full{grid-column:1/-1}
+.form-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);letter-spacing:0.05em}
+.form-input,.form-select,.form-textarea{font-family:'DM Sans',sans-serif;font-size:14px;padding:0.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff;outline:none;transition:border-color 0.18s;width:100%}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.25)}
+.form-select option{background:#1e1710;color:#fff}
+.form-textarea{resize:vertical;min-height:90px}
+.form-submit{grid-column:1/-1;margin-top:0.5rem}
+.form-submit button{width:100%;padding:0.9rem;border:none;border-radius:999px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+.form-submit button:hover{background:var(--gold-light);transform:translateY(-1px)}
+.res-or{grid-column:1/-1;text-align:center;color:rgba(255,255,255,0.3);font-size:13px;position:relative}
+.res-or::before,.res-or::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:rgba(255,255,255,0.1)}
+.res-or::before{left:0}.res-or::after{right:0}
+.res-phone{grid-column:1/-1;text-align:center}
+.res-phone a{color:var(--gold);font-size:1.5rem;font-family:'Cormorant Garamond',serif;text-decoration:none;font-weight:300}
+.res-phone p{font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px}
+.form-success{display:none;grid-column:1/-1;text-align:center;padding:2rem;background:rgba(76,175,80,0.1);border:1px solid rgba(76,175,80,0.3);border-radius:var(--radius);color:#6fcf97}
+.form-success .emo{font-size:2rem;margin-bottom:0.5rem}
+
+/* ═══════════════════════ CHATBOT ═══════════════════════ */
+#chat-fab{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  width:60px;height:60px;border-radius:50%;
+  background:var(--gold);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(200,168,75,0.4);
+  transition:all 0.2s;font-size:1.4rem;
+}
+#chat-fab:hover{transform:scale(1.05);box-shadow:0 6px 30px rgba(200,168,75,0.5)}
+#chat-fab .pulse-ring{position:absolute;width:100%;height:100%;border-radius:50%;border:2px solid var(--gold);animation:ringPulse 2s ease-out infinite}
+@keyframes ringPulse{0%{transform:scale(1);opacity:0.7}100%{transform:scale(1.5);opacity:0}}
+.chat-tooltip{position:absolute;bottom:70px;right:0;background:var(--ink);color:#fff;font-size:12px;padding:0.5rem 0.9rem;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:1;transition:opacity 0.3s}
+.chat-tooltip::after{content:'';position:absolute;top:100%;right:20px;border:6px solid transparent;border-top-color:var(--ink)}
+
+#chat-panel{
+  position:fixed;bottom:2rem;right:2rem;z-index:199;
+  width:370px;max-height:560px;
+  background:#fff;border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  display:flex;flex-direction:column;
+  transform:scale(0.85) translateY(20px);opacity:0;pointer-events:none;
+  transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  overflow:hidden;
+}
+#chat-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chat-header{background:var(--ink);padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.chat-header-text h3{font-size:14px;font-weight:500;color:#fff}
+.chat-header-text p{font-size:11px;color:rgba(255,255,255,0.5)}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:1.2rem;line-height:1;padding:0.25rem}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;background:#faf8f4}
+.msg{max-width:88%;animation:fadeUp 0.2s ease}
+.msg-bot{align-self:flex-start}
+.msg-user{align-self:flex-end}
+.msg-bubble{padding:0.65rem 0.95rem;border-radius:14px;font-size:13.5px;line-height:1.55}
+.msg-bot .msg-bubble{background:#fff;border:1px solid rgba(0,0,0,0.08);color:var(--ink);border-bottom-left-radius:4px}
+.msg-user .msg-bubble{background:var(--ink);color:#fff;border-bottom-right-radius:4px}
+.msg-time{font-size:10px;color:var(--muted);margin-top:3px;padding:0 4px}
+.msg-user .msg-time{text-align:right}
+.chat-typing{display:none;align-self:flex-start;padding:0.65rem 0.95rem;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;border-bottom-left-radius:4px}
+.typing-dots{display:flex;gap:4px}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dotBounce 1.2s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:0.2s}
+.typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes dotBounce{0%,80%,100%{transform:scale(0.7);opacity:0.4}40%{transform:scale(1);opacity:1}}
+.chat-suggestions{padding:0.5rem 1rem;display:flex;gap:0.4rem;flex-wrap:wrap;border-top:1px solid rgba(0,0,0,0.06);background:#fff}
+.sug-btn{font-size:11.5px;padding:0.3rem 0.75rem;border-radius:999px;border:1px solid rgba(0,0,0,0.12);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.sug-btn:hover{border-color:var(--gold);color:var(--gold-dark)}
+.chat-input-row{display:flex;gap:0.5rem;padding:0.75rem 1rem;border-top:1px solid rgba(0,0,0,0.08);background:#fff}
+.chat-input{flex:1;font-family:'DM Sans',sans-serif;font-size:13.5px;padding:0.55rem 0.9rem;border-radius:999px;border:1px solid rgba(0,0,0,0.14);outline:none;transition:border-color 0.18s}
+.chat-input:focus{border-color:var(--gold)}
+.chat-send{width:34px;height:34px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0}
+.chat-send:hover{background:var(--gold-light)}
+.chat-send svg{width:14px;height:14px;fill:var(--ink)}
+
+/* ═══════════════════════ REVIEWS ═══════════════════════ */
+#reviews{background:var(--warm)}
+.reviews-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem}
+.review-card{background:#fff;border-radius:var(--radius);padding:1.5rem;border:1px solid rgba(0,0,0,0.06)}
+.review-stars{color:var(--gold);font-size:14px;margin-bottom:0.75rem}
+.review-text{font-size:14px;color:var(--ink);line-height:1.65;font-style:italic}
+.review-author{margin-top:1rem;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:0.5rem}
+.review-author::before{content:'—'}
+.review-source{margin-left:auto;font-size:10px;color:var(--gold-dark);background:#fef3cd;padding:2px 7px;border-radius:999px}
+
+/* ═══════════════════════ LOYALTY ═══════════════════════ */
+#loyalty{background:var(--paper)}
+.loyalty-inner{max-width:700px;margin:0 auto;text-align:center}
+.loyalty-card{background:var(--ink);border-radius:20px;padding:2.5rem;margin-top:2rem;position:relative;overflow:hidden}
+.loyalty-card::before{content:'';position:absolute;top:-30px;right:-30px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,168,75,0.15),transparent 70%)}
+.loyalty-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#fff;margin-bottom:0.4rem}
+.loyalty-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:1.5rem}
+.punch-grid{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.punch{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(200,168,75,0.4);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all 0.2s;cursor:pointer}
+.punch.filled{background:var(--gold);border-color:var(--gold)}
+.punch:hover:not(.filled){border-color:var(--gold);background:rgba(200,168,75,0.1)}
+.loyalty-cta-text{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:1.25rem}
+.loyalty-form{display:flex;gap:0.5rem;max-width:360px;margin:0 auto}
+.loyalty-input{flex:1;font-family:'DM Sans',sans-serif;font-size:13.5px;padding:0.65rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff;outline:none;transition:border-color 0.18s}
+.loyalty-input:focus{border-color:var(--gold)}
+.loyalty-input::placeholder{color:rgba(255,255,255,0.25)}
+.loyalty-btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:0.65rem 1.2rem;border-radius:999px;background:var(--gold);border:none;color:var(--ink);cursor:pointer;transition:all 0.18s;white-space:nowrap}
+.loyalty-btn:hover{background:var(--gold-light)}
+.loyalty-success{display:none;color:#6fcf97;font-size:14px;margin-top:0.75rem}
+
+/* ═══════════════════════ FOOTER ═══════════════════════ */
+footer{background:var(--ink);color:rgba(255,255,255,0.5);text-align:center;padding:3rem 2rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#fff;margin-bottom:0.75rem}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.footer-links a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:12px;border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;margin-top:1.5rem}
+
+/* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{display:none}
+  .hours-grid{grid-template-columns:1fr}
+  .res-form{grid-template-columns:1fr}
+  .form-group.full{grid-column:1}
+  .form-submit{grid-column:1}
+  .res-or{grid-column:1}
+  .res-phone{grid-column:1}
+  #chat-panel{width:calc(100vw - 2rem);right:1rem;bottom:1rem}
+  #chat-fab{right:1.25rem;bottom:1.25rem}
+}
+
+/* ═══ GALLERY ═══ */
+#gallery { background: var(--ink); padding: 4rem 2rem; }
+.gallery-grid {
+  max-width: 1100px; margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 8px;
+}
+.gallery-item {
+  position: relative; overflow: hidden; cursor: pointer; border-radius: 8px;
+  background: #1e1710;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(6) { grid-column: span 2; }
+.gallery-item:nth-child(11) { grid-column: span 2; }
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.45s ease;
+}
+.gallery-item:hover img { transform: scale(1.07); }
+.gallery-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.6rem 0.9rem;
+  background: linear-gradient(to top, rgba(17,14,11,0.88), transparent);
+  color: #fff; font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; font-weight: 300;
+  transform: translateY(4px); opacity: 0;
+  transition: all 0.25s ease;
+}
+.gallery-item:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+
+/* Lightbox */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(17,14,11,0.95); align-items: center; justify-content: center;
+  flex-direction: column; gap: 1rem;
+  backdrop-filter: blur(6px);
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 90vw; max-height: 80vh; object-fit: contain;
+  border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: lbIn 0.25s ease;
+}
+@keyframes lbIn { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+#lightbox-caption { color: rgba(255,255,255,0.65); font-size: 14px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+#lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: rgba(255,255,255,0.1); border: none; color: #fff;
+  width: 42px; height: 42px; border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer; transition: background 0.2s;
+}
+#lightbox-close:hover { background: rgba(255,255,255,0.2); }
+#lightbox-prev, #lightbox-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; width: 46px; height: 46px; border-radius: 50%; font-size: 1.2rem;
+  cursor: pointer; transition: background 0.2s;
+}
+#lightbox-prev:hover, #lightbox-next:hover { background: rgba(200,168,75,0.3); }
+#lightbox-prev { left: 1.5rem; }
+#lightbox-next { right: 1.5rem; }
+#lightbox-counter { color: rgba(255,255,255,0.35); font-size: 12px; }
+@media(max-width:768px){
+  .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows:160px; }
+  .gallery-item:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .gallery-item:nth-child(6){ grid-column:span 1; }
+  .gallery-item:nth-child(11){ grid-column:span 1; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="nav-logo" href="#hero"><img src="https://www.oishiisushihibachi.com/logo.jpg" alt="Oishii Logo" style="height:36px;width:auto;vertical-align:middle;margin-right:8px;border-radius:4px;opacity:0.92"> <span>Oishii</span></a>
+  <ul class="nav-links">
+    <li><a href="#specials">Today's Fish</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#reservations">Reserve</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#gallery">Gallery</a>
+    <a href="#loyalty">Loyalty</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <span class="nav-open-badge"><span class="nav-dot"></span><span id="nav-status">Checking hours…</span></span>
+    <a class="nav-cta" href="https://order.oishiisushihibachi.com" target="_blank">Order Online ↗</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-glow"></div>
+  <p class="hero-tag">Camden, Delaware · Authentic Japanese</p>
+  <h1>Fresh Sushi.<br><em>Real Hibachi.</em></h1>
+  <p class="hero-sub">Handcrafted rolls · Teppanyaki · Premium sashimi</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#menu">Browse Menu</a>
+    <a class="btn-outline" href="#reservations">Reserve a Table</a>
+  </div>
+  <div class="hero-info">
+    <div class="hero-info-item">
+      <div class="label">Location</div>
+      <div class="value">386 Walmart Dr #1, Camden DE</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">Phone</div>
+      <div class="value"><a href="tel:+13022869999">(302) 286-9999</a></div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">Hours Today</div>
+      <div class="value" id="hero-hours">11:00 AM – 9:00 PM</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">Status</div>
+      <div class="value" id="hero-status">—</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ═══ STATUS BAR ═══ -->
+<div class="status-bar">
+  <div class="status-item"><strong>📍</strong> 386 Walmart Dr #1, Camden, DE 19934</div>
+  <div class="status-item"><strong>📞</strong> <a href="tel:+13022869999" style="color:var(--gold);text-decoration:none">(302) 286-9999</a></div>
+  <div class="status-item"><span class="status-open" id="status-bar-open">● <span id="status-bar-text">Loading…</span></span></div>
+  <div class="status-item"><strong>💳</strong> Cash · Apple Pay · Cards accepted</div>
+</div>
+
+<!-- ═══ TODAY'S SPECIALS ═══ -->
+<div id="specials">
+  <div class="specials-inner">
+    <div class="specials-text">
+      <div class="tag">Fresh Today · Direct from Market</div>
+      <h2>Chef's Fresh Arrivals</h2>
+      <p>Premium fish flown in fresh — ask your server for availability</p>
+    </div>
+    <div class="specials-items">
+      <div class="special-chip"><span class="dot"></span>Spanish Bluefin Tuna</div>
+      <div class="special-chip"><span class="dot"></span>King Salmon</div>
+      <div class="special-chip"><span class="dot"></span>Japanese Sea Bream</div>
+      <div class="special-chip"><span class="dot"></span>Chu Toro w. Osetra Caviar</div>
+      <div class="special-chip"><span class="dot"></span>A5 Wagyu</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+  <div class="section-header" style="max-width:1100px;margin:0 auto 0">
+    <p class="section-tag" style="color:var(--gold-light)">Our Food & Space</p>
+    <h2 class="section-title" style="color:#fff">A Visual Journey</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.45)">Explore the artistry of our cuisine and the warm ambiance of Oishii.</p>
+  </div>
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/sushi-platter-01.jpg" alt="Sushi platter" loading="lazy"/>
+      <div class="gallery-caption">Sushi platter</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/salmon-sashimi-03.jpg" alt="Salmon sashimi" loading="lazy"/>
+      <div class="gallery-caption">Salmon sashimi</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/restaurant-interior-04.jpg" alt="Restaurant interior" loading="lazy"/>
+      <div class="gallery-caption">Restaurant interior</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/dragon-roll-05.jpg" alt="Dragon roll" loading="lazy"/>
+      <div class="gallery-caption">Dragon roll</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/chef-preparation-06.jpg" alt="Chef at work" loading="lazy"/>
+      <div class="gallery-caption">Chef at work</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/bento-box-07.jpg" alt="Bento box" loading="lazy"/>
+      <div class="gallery-caption">Bento box</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/sake-service-09.jpg" alt="Sake service" loading="lazy"/>
+      <div class="gallery-caption">Sake service</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/tempura-platter-10.jpg" alt="Tempura platter" loading="lazy"/>
+      <div class="gallery-caption">Tempura platter</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(8)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/sushi-bar-11.jpg" alt="Sushi bar" loading="lazy"/>
+      <div class="gallery-caption">Sushi bar</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(9)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/restaurant-reception-13.jpg" alt="Reception area" loading="lazy"/>
+      <div class="gallery-caption">Reception area</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(10)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/sushi-party-boxes-14.jpg" alt="Party sushi boxes" loading="lazy"/>
+      <div class="gallery-caption">Party sushi boxes</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(11)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/fresh-nigiri-15.jpg" alt="Fresh nigiri" loading="lazy"/>
+      <div class="gallery-caption">Fresh nigiri</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(12)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/sushi-takeout-16.jpg" alt="Sushi takeout" loading="lazy"/>
+      <div class="gallery-caption">Sushi takeout</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(13)">
+      <img src="https://www.oishiisushihibachi.com/images/gallery/dining-room-17.jpg" alt="Dining room" loading="lazy"/>
+      <div class="gallery-caption">Dining room</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button id="lightbox-prev" onclick="lbStep(-1)">‹</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <div id="lightbox-caption"></div>
+  <div id="lightbox-counter"></div>
+  <button id="lightbox-next" onclick="lbStep(1)">›</button>
+</div>
+
+<!-- ═══ MENU ═══ -->
+<section id="menu">
+  <div class="section-header">
+    <p class="section-tag">Full Menu</p>
+    <h2 class="section-title">What We're Serving</h2>
+    <p class="section-sub">From $6 classic rolls to $68 omakase — every dish made fresh to order.</p>
+  </div>
+  <div class="menu-controls">
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="lunch">🌞 Lunch Specials</button>
+      <button class="filter-btn" data-filter="soup-salad">Soup & Salad</button>
+      <button class="filter-btn" data-filter="appetizer">Appetizers</button>
+      <button class="filter-btn" data-filter="classic-roll">Classic Rolls</button>
+      <button class="filter-btn" data-filter="creative-roll">Creative Rolls</button>
+      <button class="filter-btn" data-filter="sashimi-alacarte">Sashimi à la Carte</button>
+      <button class="filter-btn" data-filter="entree">Sushi Entrees</button>
+      <button class="filter-btn" data-filter="hibachi">Hibachi</button>
+      <button class="filter-btn" data-filter="teriyaki">Teriyaki</button>
+      <button class="filter-btn" data-filter="fried-rice">Fried Rice</button>
+      <button class="filter-btn" data-filter="sides">Sides</button>
+      <button class="filter-btn" data-filter="dessert">Dessert</button>
+      <button class="filter-btn" data-filter="drinks">Drinks</button>
+    </div>
+    <div class="search-row">
+      <input class="search-box" type="text" id="search" placeholder="Search dishes, ingredients…"/>
+      <span style="font-size:12px;color:var(--muted)" id="result-count"></span>
+    </div>
+  </div>
+  <div class="menu-root" id="menu-root"></div>
+  <div class="menu-empty" id="menu-empty">
+    <p style="font-size:2rem;margin-bottom:0.5rem">🍱</p>
+    <p>No items found. Try another keyword.</p>
+  </div>
+</section>
+
+<!-- ═══ HOURS & LOCATION ═══ -->
+<section id="hours">
+  <div class="section-header">
+    <p class="section-tag">Find Us</p>
+    <h2 class="section-title">Hours & Location</h2>
+  </div>
+  <div class="hours-grid">
+    <div>
+      <table class="hours-table" id="hours-table">
+        <tbody>
+          <tr data-day="1"><td>Monday</td><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="5"><td>Friday</td><td>11:00 AM – 9:30 PM</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>11:00 AM – 9:30 PM</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>12:00 PM – 8:30 PM</td></tr>
+        </tbody>
+      </table>
+      <div class="lunch-note">
+        🌞 <strong>Lunch Specials</strong> available Monday–Saturday, 11:00 AM – 2:30 PM.<br>
+        Excludes Sundays and public holidays.
+      </div>
+    </div>
+    <div>
+      <div class="map-placeholder">
+        <h3>386 Walmart Dr #1<br>Camden, DE 19934</h3>
+        <p>Located in the Walmart plaza<br>Ample free parking available</p>
+        <a href="https://maps.google.com/?q=386+Walmart+Dr+Camden+DE" target="_blank">Open in Google Maps ↗</a>
+        <a href="tel:+13022869999" style="margin-top:0.25rem">Call (302) 286-9999</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESERVATION ═══ -->
+<section id="reservations">
+  <div class="res-inner">
+    <p class="section-tag" style="color:var(--gold-light)">Book a Table</p>
+    <h2 class="section-title">Reserve Your Spot</h2>
+    <p class="section-sub">Hibachi booths fill up fast on weekends. Book ahead and we'll have your table ready.</p>
+    <div class="res-form" id="res-form">
+      <div class="form-group">
+        <label class="form-label">First name</label>
+        <input class="form-input" type="text" placeholder="Your name" id="res-name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone number</label>
+        <input class="form-input" type="tel" placeholder="(302) 000-0000" id="res-phone"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input class="form-input" type="date" id="res-date"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Time</label>
+        <select class="form-select" id="res-time">
+          <option value="">Select time</option>
+          <option>11:00 AM</option><option>11:30 AM</option>
+          <option>12:00 PM</option><option>12:30 PM</option>
+          <option>1:00 PM</option><option>1:30 PM</option>
+          <option>2:00 PM</option><option>5:00 PM</option>
+          <option>5:30 PM</option><option>6:00 PM</option>
+          <option>6:30 PM</option><option>7:00 PM</option>
+          <option>7:30 PM</option><option>8:00 PM</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Party size</label>
+        <select class="form-select" id="res-size">
+          <option value="">How many guests?</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Seating preference</label>
+        <select class="form-select" id="res-pref">
+          <option value="">No preference</option>
+          <option>Hibachi table (show experience)</option>
+          <option>Regular dining table</option>
+          <option>Bar seating</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Special requests (optional)</label>
+        <textarea class="form-textarea" placeholder="Birthday celebration, allergies, accessibility needs…" id="res-notes"></textarea>
+      </div>
+      <div class="form-submit">
+        <button onclick="submitReservation()">Request Reservation</button>
+      </div>
+      <div class="res-or">or call us directly</div>
+      <div class="res-phone">
+        <a href="tel:+13022869999">(302) 286-9999</a>
+        <p>We'll confirm your reservation within 1 hour</p>
+      </div>
+      <div class="form-success" id="res-success">
+        <div class="emo">🎉</div>
+        <p style="font-weight:500;color:#6fcf97;margin-bottom:0.3rem">Reservation Request Sent!</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.5)">We'll call you at your number to confirm. See you soon!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section id="reviews" style="background:var(--warm)">
+  <div class="section-header">
+    <p class="section-tag">What Guests Say</p>
+    <h2 class="section-title">94% Recommend Oishii</h2>
+    <p class="section-sub">Real reviews from real guests — Camden's favorite Japanese restaurant.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The food is excellent — tried the gyoza and three rolls, all very well done and tasty. They also provided extra spicy mayo and eel sauce which was a nice change from just soy sauce. Definitely going again."</p>
+      <div class="review-author">Yelp Reviewer <span class="review-source">Yelp</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Fresh fish variety was abundant. The Camden Dream Roll was a standout — torched salmon with garlic chips is something else. Great date night spot and worth every penny."</p>
+      <div class="review-author">Google Reviewer <span class="review-source">Google</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Hibachi experience was amazing. The chefs are entertaining and the food came out perfectly cooked. The Wagyu roll is absolutely premium — if you're going to splurge, that's the one."</p>
+      <div class="review-author">Facebook Reviewer <span class="review-source">Facebook</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOYALTY ═══ -->
+<section id="loyalty">
+  <div class="loyalty-inner">
+    <p class="section-tag">Loyalty Program</p>
+    <h2 class="section-title">Regulars Get Rewarded</h2>
+    <p class="section-sub" style="margin:0 auto 2rem">Every visit earns a punch. 10 punches = a free signature roll. No app needed — just your phone number.</p>
+    <div class="loyalty-card">
+      <p class="loyalty-title">Your Loyalty Card</p>
+      <p class="loyalty-sub">Click to stamp — demo mode</p>
+      <div class="punch-grid" id="punch-grid"></div>
+      <p class="loyalty-cta-text" id="loyalty-cta-text">Sign up with your phone number to start earning real punches</p>
+      <div class="loyalty-form">
+        <input class="loyalty-input" type="tel" placeholder="Your phone number" id="loyalty-phone"/>
+        <button class="loyalty-btn" onclick="joinLoyalty()">Join Free</button>
+      </div>
+      <p class="loyalty-success" id="loyalty-success">🎉 You're in! Show this to your server on your next visit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">おいしい <span>Oishii</span></div>
+  <div class="footer-links">
+    <a href="#menu">Menu</a>
+    <a href="#hours">Hours</a>
+    <a href="#reservations">Reserve</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#loyalty">Loyalty</a>
+    <a href="https://order.oishiisushihibachi.com" target="_blank">Order Online</a>
+    <a href="tel:+13022869999">(302) 286-9999</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Oishii Japanese Restaurant · 386 Walmart Dr #1, Camden, DE 19934<br>
+    <span style="font-size:11px;margin-top:0.3rem;display:block;opacity:0.5">Concept design for client review</span>
+  </div>
+</footer>
+
+<!-- ═══ CHAT FAB ═══ -->
+<button id="chat-fab" onclick="toggleChat()" aria-label="Open AI assistant">
+  <div class="pulse-ring"></div>
+  <span>🍣</span>
+  <div class="chat-tooltip" id="chat-tooltip">Ask me anything about the menu!</div>
+</button>
+
+<!-- ═══ CHAT PANEL ═══ -->
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-avatar">🍣</div>
+    <div class="chat-header-text">
+      <h3>Oishii AI Concierge</h3>
+      <p>Ask about the menu, hours, or recommendations</p>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg msg-bot">
+      <div class="msg-bubble">Irasshaimase! 🎌 I'm Oishii's AI concierge. I know our entire menu and can help you find the perfect dish. What are you in the mood for?</div>
+      <div class="msg-time">Just now</div>
+    </div>
+  </div>
+  <div class="chat-typing" id="chat-typing">
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+  </div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="sug-btn" onclick="sendSuggestion(this)">🌶️ Spicy options</button>
+    <button class="sug-btn" onclick="sendSuggestion(this)">🥬 Vegetarian</button>
+    <button class="sug-btn" onclick="sendSuggestion(this)">⭐ Most popular</button>
+    <button class="sug-btn" onclick="sendSuggestion(this)">💰 Best value</button>
+    <button class="sug-btn" onclick="sendSuggestion(this)">🎉 Group dinner</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" type="text" id="chat-input" placeholder="Ask anything…" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="chat-send" onclick="sendChat()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  HOURS LOGIC
+// ═══════════════════════════════════════════
+const HOURS = {
+  0:{open:'12:00',close:'20:30',label:'12:00 PM – 8:30 PM'},
+  1:{open:'11:00',close:'21:00',label:'11:00 AM – 9:00 PM'},
+  2:{open:'11:00',close:'21:00',label:'11:00 AM – 9:00 PM'},
+  3:{open:'11:00',close:'21:00',label:'11:00 AM – 9:00 PM'},
+  4:{open:'11:00',close:'21:00',label:'11:00 AM – 9:00 PM'},
+  5:{open:'11:00',close:'21:30',label:'11:00 AM – 9:30 PM'},
+  6:{open:'11:00',close:'21:30',label:'11:00 AM – 9:30 PM'},
+};
+function checkOpen(){
+  const now=new Date();
+  const day=now.getDay();
+  const h=HOURS[day];
+  const cur=now.getHours()*60+now.getMinutes();
+  const [oh,om]=h.open.split(':').map(Number);
+  const [ch,cm]=h.close.split(':').map(Number);
+  const openMin=oh*60+om, closeMin=ch*60+cm;
+  const isOpen=cur>=openMin&&cur<closeMin;
+  const isLunch=day>0&&day<6&&cur>=openMin&&cur<(11*60+150);
+  return{isOpen,isLunch,label:h.label,closeMin,openMin,cur};
+}
+function initHours(){
+  const {isOpen,isLunch,label,closeMin,cur}=checkOpen();
+  const day=new Date().getDay();
+  // highlight today in table
+  document.querySelectorAll('#hours-table tr').forEach(tr=>{
+    if(parseInt(tr.dataset.day)===day)tr.classList.add('today');
+  });
+  const statusEl=document.getElementById('nav-status');
+  const heroStatus=document.getElementById('hero-status');
+  const heroHours=document.getElementById('hero-hours');
+  const barText=document.getElementById('status-bar-text');
+  const barOpen=document.getElementById('status-bar-open');
+  if(isOpen){
+    const minsLeft=closeMin-cur;
+    const txt=minsLeft<60?`Open · closes in ${minsLeft} min`:'Open Now';
+    statusEl.textContent=txt;
+    heroStatus.innerHTML=`<span style="color:#6fcf97;font-weight:500">● Open Now</span>`;
+    barText.textContent=txt;
+    barOpen.style.color='#6fcf97';
+    if(isLunch) barText.textContent+=' · Lunch Specials Available';
+  }else{
+    statusEl.textContent='Closed';
+    heroStatus.innerHTML=`<span style="color:#ef9a9a">● Closed</span>`;
+    barText.textContent='Currently Closed';
+    barOpen.style.color='#ef9a9a';
+  }
+  heroHours.textContent=HOURS[day].label;
+  // hide tooltip after 4s
+  setTimeout(()=>{const t=document.getElementById('chat-tooltip');if(t)t.style.opacity='0'},4000);
+}
+initHours();
+
+// ═══════════════════════════════════════════
+//  MENU DATA (Real Oishii menu)
+// ═══════════════════════════════════════════
+const MENU=[
+  {cat:'lunch',name:'L2. Hibachi Chicken (Lunch)',price:'$14.95',desc:'Soup or salad, fried rice and vegetables',badges:['lunch','pop']},
+  {cat:'lunch',name:'L3. Hibachi Shrimp (Lunch)',price:'$15.95',desc:'Soup or salad, fried rice and vegetables',badges:['lunch']},
+  {cat:'lunch',name:'L5. Hibachi Steak (Lunch)',price:'$15.95',desc:'Soup or salad, fried rice and vegetables',badges:['lunch']},
+  {cat:'lunch',name:'L6. Hibachi Salmon (Lunch)',price:'$16.95',desc:'Soup or salad, fried rice and vegetables',badges:['lunch']},
+  {cat:'lunch',name:'L1. Hibachi Vegetable (Lunch)',price:'$13.95',desc:'Soup or salad, fried rice and vegetables',badges:['lunch','veg']},
+  {cat:'lunch',name:'L7. Hibachi Combination (Lunch)',price:'$18.95',desc:'Any 2 proteins — chicken, shrimp, steak, or salmon',badges:['lunch','pop']},
+  {cat:'lunch',name:'L9. Teriyaki Chicken Bento (Lunch)',price:'$15.95',desc:'Bento box with teriyaki chicken, rice, sides',badges:['lunch','pop']},
+  {cat:'lunch',name:'L13. Sushi Lunch',price:'$16.95',desc:'5 pcs sushi and California roll',badges:['lunch','pop']},
+  {cat:'lunch',name:'L14. Sashimi & Sushi Combo Lunch',price:'$18.95',desc:'6 pcs sashimi, 4 pcs sushi, 1 tuna roll',badges:['lunch']},
+  {cat:'lunch',name:'L15. Sashimi Lunch',price:'$17.95',desc:'10 pcs slices of raw fish',badges:['lunch']},
+  {cat:'lunch',name:'Any 2 Rolls',price:'$12.95',desc:'Choose any two classic rolls',badges:['lunch','pop']},
+  {cat:'lunch',name:'Any 3 Rolls',price:'$16.95',desc:'Choose any three classic rolls',badges:['lunch','pop']},
+  {cat:'soup-salad',name:'Miso Soup',price:'$3.95',desc:'Soybean broth, tofu, seaweed, scallions',badges:['veg']},
+  {cat:'soup-salad',name:'Clear Soup',price:'$3.95',desc:'Mushroom with crispy onions in clear broth',badges:['veg']},
+  {cat:'soup-salad',name:'House Salad',price:'$4.95',desc:'Mixed greens with ginger dressing',badges:['veg']},
+  {cat:'soup-salad',name:'Seaweed Salad',price:'$8.95',desc:'Marinated seaweed, sesame seeds',badges:['veg','pop']},
+  {cat:'soup-salad',name:'Kani Salad',price:'$8.95',desc:'Krab meat, cucumbers, tobiko, sweet chili mayo',badges:[]},
+  {cat:'soup-salad',name:'Sashimi Salad',price:'$15.00',desc:'Tuna, salmon, white fish, shrimp, kani, mango, cucumber, mixed greens, citrus soy dressing',badges:['pop']},
+  {cat:'soup-salad',name:'Avocado Salad',price:'$8.95',desc:'Mixed greens with avocado and ginger dressing',badges:['veg']},
+  {cat:'appetizer',name:'Pan Fried Pork Gyoza (6)',price:'$8.95',desc:'Japanese style pork & cabbage dumplings',badges:['pop']},
+  {cat:'appetizer',name:'Pan Fried Yasai Gyoza (6)',price:'$8.95',desc:'Japanese style vegetable dumplings',badges:['veg']},
+  {cat:'appetizer',name:'Shrimp Shumai (6)',price:'$8.95',desc:'Japanese style steamed shrimp dumplings',badges:[]},
+  {cat:'appetizer',name:'Edamame',price:'$6.95',desc:'Steamed salted soybeans',badges:['veg']},
+  {cat:'appetizer',name:'Spicy Edamame',price:'$7.95',desc:'Steamed soybeans in spicy seasoning',badges:['veg','spicy']},
+  {cat:'appetizer',name:'Crispy Calamari',price:'$11.95',desc:'Served with sweet chili sauce',badges:['pop']},
+  {cat:'appetizer',name:'Haru Maki (2)',price:'$5.95',desc:'Crispy spring rolls',badges:['veg']},
+  {cat:'appetizer',name:'Scallion Pancake',price:'$8.95',desc:'Savory pancake with chopped scallions',badges:['veg']},
+  {cat:'appetizer',name:'Holiday Roll',price:'$8.95',desc:'Tempura crab stick cream cheese, yummy sauce, eel sauce',badges:['pop']},
+  {cat:'appetizer',name:'Shrimp & Veg Tempura',price:'$11.95',desc:'Shrimp tempura, broccoli, sweet potato, onion',badges:['pop']},
+  {cat:'appetizer',name:'Crispy Rice 🌶️',price:'$15.00',desc:'Spicy tuna or spicy salmon jalapeño, truffle wasabi sauce, eel sauce',badges:['spicy','pop']},
+  {cat:'appetizer',name:'Spicy Tuna Pizza (6) 🌶️',price:'$16.00',desc:'Scallion pancake, spicy tuna, onion, peppers, wasabi mayo, spicy mayo, sweet soy',badges:['spicy','pop']},
+  {cat:'appetizer',name:'Yellowtail Jalapeño 🌶️',price:'$15.00',desc:'Yellowtail jalapeño, onion citrus soy sauce',badges:['spicy']},
+  {cat:'appetizer',name:'Bluefin Tuna Pepper Tataki',price:'$15.00',desc:'Pan seared tuna, onion salsa, ponzu sauce',badges:['prem']},
+  {cat:'appetizer',name:'Miso King Salmon',price:'$16.00',desc:'Grilled king salmon and asparagus, miso mustard dressing, citrus soy dressing',badges:['prem']},
+  {cat:'appetizer',name:'Black Truffle Salmon Tartare',price:'$18.00',desc:'Served with toasted milk bread',badges:['prem']},
+  {cat:'appetizer',name:'A5 Wagyu Beef',price:'$22.00',desc:'Garlic sauce, truffle salt, fresh wasabi, chive, shimeji mushroom',badges:['prem']},
+  {cat:'appetizer',name:'Sushi Taco — Tuna/Salmon/Yellowtail (2)',price:'$9.00',desc:'Fried tacos, fish tartare, wasabi-cilantro sauce, onion, tomatoes',badges:[]},
+  {cat:'classic-roll',name:'California Roll',price:'$7.00',desc:'Kani, avocado, cucumber',badges:['pop']},
+  {cat:'classic-roll',name:'Spicy Tuna Roll 🌶️',price:'$7.50',desc:'Tuna with spicy mayo',badges:['spicy','pop']},
+  {cat:'classic-roll',name:'Spicy Salmon Roll 🌶️',price:'$7.50',desc:'Salmon with spicy mayo',badges:['spicy','pop']},
+  {cat:'classic-roll',name:'Philadelphia Roll',price:'$7.00',desc:'Smoked salmon, cucumber, cream cheese',badges:['pop']},
+  {cat:'classic-roll',name:'Shrimp Tempura Roll',price:'$9.00',desc:'Shrimp tempura, cucumber, avocado, lettuce, mayo',badges:['pop']},
+  {cat:'classic-roll',name:'Salmon Roll',price:'$7.00',desc:'Fresh salmon, seasoned rice, nori',badges:['pop']},
+  {cat:'classic-roll',name:'Eel Avocado Roll',price:'$7.50',desc:'Eel (unagi) and avocado with eel sauce',badges:['pop']},
+  {cat:'classic-roll',name:'Rainbow Roll',price:'$14.00',desc:'Inside: Kani, avocado, cucumber · Top: Tuna, salmon, yellowtail',badges:['pop']},
+  {cat:'classic-roll',name:'Spider Roll',price:'$15.00',desc:'Fried soft shell crab, cucumber, avocado, lettuce, tobiko',badges:['pop']},
+  {cat:'classic-roll',name:'Spicy Crispy Roll 🌶️',price:'$12.00',desc:'Spicy salmon/tuna/yellowtail, jalapeño, deep-fried, wasabi mayo, sweet chili mayo',badges:['spicy','pop']},
+  {cat:'classic-roll',name:'Cucumber Roll',price:'$6.00',desc:'Fresh cucumber, seasoned rice, nori',badges:['veg']},
+  {cat:'classic-roll',name:'Avocado Roll',price:'$6.00',desc:'Creamy avocado, seasoned rice, nori',badges:['veg']},
+  {cat:'classic-roll',name:'Tuna Roll',price:'$8.00',desc:'Fresh tuna, seasoned rice, nori',badges:[]},
+  {cat:'classic-roll',name:'Yellowtail Scallion Roll',price:'$7.00',desc:'Yellowtail and scallion',badges:[]},
+  {cat:'classic-roll',name:'Spicy Yellowtail Roll 🌶️',price:'$7.50',desc:'Yellowtail with spicy mayo',badges:['spicy']},
+  {cat:'classic-roll',name:'Alaska Roll',price:'$8.00',desc:'Salmon, avocado, cucumber',badges:[]},
+  {cat:'classic-roll',name:'Toro Scallion Roll',price:'$10.00',desc:'Fatty tuna (toro) and scallion',badges:['prem']},
+  {cat:'classic-roll',name:'King Crab Avocado Roll',price:'$16.00',desc:'Real king crab and avocado, topped with tobiko',badges:['prem']},
+  {cat:'classic-roll',name:'Spicy Shrimp Roll 🌶️',price:'$7.50',desc:'Shrimp with spicy mayo',badges:['spicy']},
+  {cat:'classic-roll',name:'Boston Roll',price:'$7.50',desc:'Shrimp, avocado, cucumber',badges:[]},
+  {cat:'classic-roll',name:'Eel Cucumber Roll',price:'$7.50',desc:'Eel and cucumber with eel sauce',badges:[]},
+  {cat:'creative-roll',name:'Camden Dream Roll 🌶️',price:'$15.00',desc:'Inside: Tempura kani, avocado · Top: Salmon, spicy mayo, torched, garlic chips, scallion',badges:['spicy','pop']},
+  {cat:'creative-roll',name:'Godzilla Roll 🌶️',price:'$15.00',desc:'Inside: Spicy tuna, avocado, kani · Top: Tobiko, scallion, spicy mayo, eel sauce (fried roll)',badges:['spicy','pop']},
+  {cat:'creative-roll',name:'Volcano Roll 🌶️',price:'$16.00',desc:'Inside: Shrimp tempura, avocado · Top: Spicy kani, orange miso sauce, eel sauce',badges:['spicy','pop']},
+  {cat:'creative-roll',name:'Black Dragon Roll',price:'$16.00',desc:'Inside: Shrimp tempura, cucumber · Top: Eel, avocado, eel sauce',badges:['pop']},
+  {cat:'creative-roll',name:'Las Vegas Roll',price:'$15.00',desc:'Inside: Kani, cream cheese, avocado · Top: Baked kani, special sauce (fried roll)',badges:['pop']},
+  {cat:'creative-roll',name:'Rainbow Brite Roll 🌶️',price:'$18.00',desc:'Inside: Spicy tuna, shrimp tempura · Top: Tuna, salmon, avocado, spicy mayo, eel sauce, wasabi mayo',badges:['spicy','pop']},
+  {cat:'creative-roll',name:'Out of Control Roll',price:'$19.00',desc:'Inside: Tuna, salmon, yellowtail, asparagus · Top: Seared trio, rice cracker crunch, sweet chili, wasabi mayo',badges:['prem','pop']},
+  {cat:'creative-roll',name:'Mount Fuji Roll',price:'$16.00',desc:'Inside: Tempura, eel, avocado, mango · Top: Fried kani, sweet chili mayo, eel sauce',badges:[]},
+  {cat:'creative-roll',name:'Mexican Roll',price:'$16.00',desc:'Inside: Shrimp tempura, cream cheese, cucumber · Top: Avocado, sweet chili mayo, eel sauce',badges:[]},
+  {cat:'creative-roll',name:'Fire Dragon Roll 🌶️',price:'$16.00',desc:'Inside: Spicy tuna, kani, jalapeño · Top: Pepper tuna, avocado, spicy mayo, sriracha',badges:['spicy']},
+  {cat:'creative-roll',name:'Red Sea Roll 🌶️',price:'$16.00',desc:'Inside: Shrimp tempura, avocado · Top: Spicy tuna, sweet soy, sweet chili mayo',badges:['spicy']},
+  {cat:'creative-roll',name:'Cracked Lobster Roll 🌶️',price:'$16.00',desc:'Inside: Sweet potato, lobster salad, tobiko · Top: Spicy kani, spicy mayo, orange miso',badges:['spicy']},
+  {cat:'creative-roll',name:'Truffle Lover Roll',price:'$17.00',desc:'Inside: Lobster salad, mango · Top: White tuna, truffle mushroom paste, micro greens',badges:['prem']},
+  {cat:'creative-roll',name:'Sexy Lady Roll 🌶️',price:'$21.00',desc:'Inside: Steamed lobster, mango, asparagus · Top: Avocado, spicy tuna, special sauce, soy paper wrap',badges:['spicy','prem']},
+  {cat:'creative-roll',name:'Sweet Lobster Roll',price:'$22.00',desc:'Inside: Tempura lobster, tuna, mango · Top: Avocado, strawberry, wasabi mayo, sweet chili sauce',badges:['prem']},
+  {cat:'creative-roll',name:'A5 Wagyu Roll',price:'$40.00',desc:'Inside: King crab, avocado, cucumber, tamago · Top: A5 wagyu beef and special sauce',badges:['prem']},
+  {cat:'creative-roll',name:'What A Roll',price:'$14.00',desc:'Inside: Shrimp tempura, avocado, jalapeño · Top: Kani, sweet chili mayo',badges:[]},
+  {cat:'creative-roll',name:'Bonsai Roll 🌶️',price:'$14.00',desc:'Inside: Spicy white tuna, crunch, cucumber · Top: Steamed shrimp, wasabi mayo',badges:['spicy']},
+  {cat:'creative-roll',name:'Forest Roll',price:'$13.00',desc:'Inside: Avocado, cucumber, asparagus · Top: Avocado, seaweed salad',badges:['veg']},
+  {cat:'creative-roll',name:'Snow Mountain Roll 🌶️',price:'$15.00',desc:'Inside: Spicy yellowtail · Top: Spicy kani and crunch',badges:['spicy']},
+  {cat:'sashimi-alacarte',name:'Salmon (Sake)',price:'$3.50',desc:'1 piece — premium Atlantic salmon',badges:['pop']},
+  {cat:'sashimi-alacarte',name:'Tuna (Maguro)',price:'$3.50',desc:'1 piece — fresh tuna',badges:['pop']},
+  {cat:'sashimi-alacarte',name:'Yellowtail (Hamachi)',price:'$3.50',desc:'1 piece — buttery yellowtail',badges:['pop']},
+  {cat:'sashimi-alacarte',name:'Fatty Tuna (Toro)',price:'$8.00',desc:'1 piece — premium fatty tuna, rich and buttery',badges:['prem','pop']},
+  {cat:'sashimi-alacarte',name:'Chu Toro w. Osetra Caviar',price:'$10.00',desc:'1 piece — medium fatty tuna with premium caviar',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'King Salmon',price:'$4.50',desc:'1 piece — premium king salmon',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'Truffle Butter Scallop',price:'$5.50',desc:'1 piece',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'Torched Salmon w. Truffle Paste',price:'$5.00',desc:'1 piece — torched with truffle paste topping',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'White Tuna (Shiro Maguro)',price:'$3.00',desc:'1 piece',badges:[]},
+  {cat:'sashimi-alacarte',name:'Scallop (Hotate)',price:'$3.50',desc:'1 piece',badges:[]},
+  {cat:'sashimi-alacarte',name:'Eel (Unagi)',price:'$3.50',desc:'1 piece',badges:[]},
+  {cat:'sashimi-alacarte',name:'Sweet Shrimp',price:'$4.00',desc:'1 piece',badges:[]},
+  {cat:'sashimi-alacarte',name:'Sweet Shrimp w. Mayo Garlic Chip',price:'$7.00',desc:'1 piece',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'Squid w. Black Truffle Salt',price:'$4.00',desc:'1 piece',badges:['prem']},
+  {cat:'sashimi-alacarte',name:'Amber Jack (Kanpachi)',price:'$4.50',desc:'1 piece',badges:[]},
+  {cat:'sashimi-alacarte',name:'Japanese Sea Bream (Madai)',price:'$4.50',desc:'1 piece',badges:[]},
+  {cat:'entree',name:'Sushi Dinner 🌶️',price:'$30.00',desc:'8 pcs sushi, chef\'s daily selection, spicy tuna roll · With miso soup or green salad',badges:['spicy','pop']},
+  {cat:'entree',name:'Sashimi Dinner',price:'$38.00',desc:'18 pcs sashimi, chef\'s daily selection · With miso soup or green salad',badges:['pop']},
+  {cat:'entree',name:'Sushi & Sashimi Combo (for 1) 🌶️',price:'$38.00',desc:'5 pcs assorted sushi, 10 pcs assorted sashimi, spicy tuna roll',badges:['spicy','pop']},
+  {cat:'entree',name:'Sushi & Sashimi Combo (for 2) 🌶️',price:'$70.00',desc:'10 pcs sushi, 18 pcs sashimi, spicy tuna roll and volcano roll',badges:['spicy','pop']},
+  {cat:'entree',name:'Bara Chirashi',price:'$28.00',desc:'Tuna, salmon, yellowtail, white tuna, tamago, cucumber, salmon roe on sushi rice',badges:['pop']},
+  {cat:'entree',name:'Omakase Premium',price:'$68.00',desc:'12 pcs manhattan style sushi and Japanese futo maki',badges:['prem']},
+  {cat:'entree',name:'Triple Sushi 🌶️',price:'$30.00',desc:'3 pcs tuna, 3 pcs salmon, 3 pcs yellowtail, spicy salmon roll',badges:['spicy']},
+  {cat:'entree',name:'Triple Spicy Maki 🌶️',price:'$20.00',desc:'1 spicy tuna roll, 1 spicy salmon roll, 1 spicy yellowtail roll',badges:['spicy']},
+  {cat:'entree',name:'Unagi Don',price:'$28.00',desc:'Whole BBQ eel on rice, eel sauce, Japanese pickled radish',badges:[]},
+  {cat:'hibachi',name:'E2. Hibachi Chicken',price:'$19.95',desc:'Soup or salad, fried rice, zucchini, onion, broccoli, mushrooms, carrot',badges:['pop']},
+  {cat:'hibachi',name:'E3. Hibachi Shrimp',price:'$24.95',desc:'Soup or salad, fried rice and vegetables',badges:['pop']},
+  {cat:'hibachi',name:'E4. Hibachi Steak',price:'$26.95',desc:'Soup or salad, fried rice and vegetables',badges:['pop']},
+  {cat:'hibachi',name:'E5. Hibachi Salmon',price:'$26.95',desc:'Soup or salad, fried rice and vegetables',badges:[]},
+  {cat:'hibachi',name:'E7. Hibachi Filet Mignon',price:'$28.95',desc:'Soup or salad, fried rice and vegetables',badges:['prem']},
+  {cat:'hibachi',name:'E8. Hibachi Lobster',price:'$35.95',desc:'Soup or salad, fried rice and vegetables',badges:['prem']},
+  {cat:'hibachi',name:'E9. Hibachi Shrimp & Chicken',price:'$25.95',desc:'Combo — soup or salad, fried rice and vegetables',badges:['pop']},
+  {cat:'hibachi',name:'E10. Hibachi Steak & Chicken',price:'$25.95',desc:'Combo — soup or salad, fried rice and vegetables',badges:['pop']},
+  {cat:'hibachi',name:'E11. Hibachi Steak & Shrimp',price:'$26.95',desc:'Combo — soup or salad, fried rice and vegetables',badges:[]},
+  {cat:'hibachi',name:'E21. Hibachi Filet Mignon & Lobster',price:'$38.95',desc:'Combo — soup or salad, fried rice and vegetables',badges:['prem']},
+  {cat:'hibachi',name:'E1. Hibachi Vegetable',price:'$17.95',desc:'Soup or salad, fried rice and vegetables',badges:['veg']},
+  {cat:'hibachi',name:'E6. Hibachi Scallop',price:'$28.95',desc:'Soup or salad, fried rice and vegetables',badges:[]},
+  {cat:'hibachi',name:'E13. Hibachi Salmon & Chicken',price:'$27.95',desc:'Combo — soup or salad, fried rice and vegetables',badges:[]},
+  {cat:'teriyaki',name:'E24. Chicken Teriyaki',price:'$19.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:['pop']},
+  {cat:'teriyaki',name:'E25. Salmon Teriyaki',price:'$26.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:[]},
+  {cat:'teriyaki',name:'E26. Steak Teriyaki',price:'$26.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:[]},
+  {cat:'teriyaki',name:'E27. Shrimp Teriyaki',price:'$24.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:[]},
+  {cat:'teriyaki',name:'E22. Tofu Teriyaki',price:'$17.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:['veg']},
+  {cat:'teriyaki',name:'E23. Vegetable Teriyaki',price:'$17.95',desc:'Soup or salad, white rice and vegetables, teriyaki sauce',badges:['veg']},
+  {cat:'fried-rice',name:'Oishii Chicken Fried Rice',price:'$15.95',desc:'Onions, sweet corn, butter, garlic',badges:['pop']},
+  {cat:'fried-rice',name:'Oishii Shrimp Fried Rice',price:'$17.95',desc:'Onions, sweet corn, butter, garlic',badges:[]},
+  {cat:'fried-rice',name:'Oishii Steak Fried Rice',price:'$17.95',desc:'Onions, sweet corn, butter, garlic',badges:[]},
+  {cat:'fried-rice',name:'Oishii Combo Fried Rice',price:'$23.95',desc:'Chicken, steak, shrimp — onions, sweet corn, butter, garlic',badges:['pop']},
+  {cat:'sides',name:'Fried Rice',price:'$3.95',desc:'Side portion',badges:[]},
+  {cat:'sides',name:'White Rice',price:'$3.95',desc:'Steamed white rice',badges:['veg']},
+  {cat:'sides',name:'Hibachi Noodle',price:'$4.95',desc:'Japanese-style hibachi noodles',badges:[]},
+  {cat:'sides',name:'Spicy Mayo',price:'$1.00',desc:'Extra sauce',badges:[]},
+  {cat:'sides',name:'Eel Sauce',price:'$1.00',desc:'Extra sauce',badges:[]},
+  {cat:'sides',name:'Sautéed Mushroom',price:'$7.95',desc:'Sautéed mushrooms',badges:['veg']},
+  {cat:'sides',name:'Chicken (side)',price:'$9.95',desc:'Add-on protein',badges:[]},
+  {cat:'sides',name:'Shrimp (side)',price:'$10.95',desc:'Add-on protein',badges:[]},
+  {cat:'sides',name:'Salmon (side)',price:'$11.95',desc:'Add-on protein',badges:[]},
+  {cat:'sides',name:'Steak (side)',price:'$11.95',desc:'Add-on protein',badges:[]},
+  {cat:'sides',name:'Lobster (side)',price:'$17.95',desc:'Add-on protein',badges:['prem']},
+  {cat:'dessert',name:'Mochi Ice Cream',price:'$7.95',desc:'Vanilla, Mango, Strawberry, Green Tea',badges:['pop']},
+  {cat:'dessert',name:'Fried Ice Cream',price:'$9.95',desc:'Vanilla or Green Tea — ice cream wrapped in bread, fried with tempura powder',badges:['pop']},
+  {cat:'dessert',name:'Ice Cream',price:'$6.95',desc:'Vanilla, Green Tea, Red Bean',badges:[]},
+  {cat:'dessert',name:'Fried Oreos',price:'$8.95',desc:'Deep fried Oreo cookies',badges:[]},
+  {cat:'drinks',name:'Japanese Soda',price:'$5.00',desc:'Original, Lychee, Melon, Strawberry, Orange',badges:['pop']},
+  {cat:'drinks',name:'Thai Tea',price:'$6.00',desc:'Classic Thai iced tea',badges:['pop']},
+  {cat:'drinks',name:'House Drinks',price:'$3.50',desc:'Pepsi, Diet Pepsi, Mountain Dew, Root Beer, Iced Tea, Pink Lemonade, Hot Tea',badges:[]},
+  {cat:'drinks',name:'Shirley Temple',price:'$4.00',desc:'Non-alcoholic cocktail',badges:[]},
+  {cat:'drinks',name:'Juice',price:'$4.00',desc:'Apple, Cranberry, Orange',badges:[]},
+  {cat:'drinks',name:'San Pellegrino',price:'$5.00',desc:'Sparkling mineral water',badges:[]},
+];
+
+const CAT_CONFIG={
+  'lunch':            {label:'Lunch Specials',sub:'Mon–Sat 11:00 AM – 2:30 PM · Excludes Sundays & holidays'},
+  'soup-salad':       {label:'Soup & Salad',sub:''},
+  'appetizer':        {label:'Appetizers',sub:'Kitchen & sushi appetizers'},
+  'classic-roll':     {label:'Classic Rolls & Hand Rolls',sub:''},
+  'creative-roll':    {label:'Creative Rolls',sub:'Chef\'s specialty rolls'},
+  'sashimi-alacarte': {label:'Sushi & Sashimi à la Carte',sub:'1 piece each'},
+  'entree':           {label:'Sushi & Sashimi Entrees',sub:'Served with miso soup or green salad'},
+  'hibachi':          {label:'Hibachi Grilled',sub:'Served with soup or salad, fried rice and vegetables'},
+  'teriyaki':         {label:'Teriyaki Grill',sub:'Served with soup or salad, white rice and vegetables'},
+  'fried-rice':       {label:'Oishii Hibachi Fried Rice',sub:'Fresh onions, sweet corn, butter and garlic'},
+  'sides':            {label:'Side Orders',sub:''},
+  'dessert':          {label:'Dessert',sub:''},
+  'drinks':           {label:'Beverages',sub:''},
+};
+const CAT_ORDER=['lunch','soup-salad','appetizer','classic-roll','creative-roll','sashimi-alacarte','entree','hibachi','teriyaki','fried-rice','sides','dessert','drinks'];
+const BADGE_CFG={
+  spicy:{label:'🌶️ Spicy',cls:'b-spicy'},
+  pop:{label:'⭐ Popular',cls:'b-pop'},
+  veg:{label:'🥬 Vegetarian',cls:'b-veg'},
+  prem:{label:'✦ Premium',cls:'b-prem'},
+  lunch:{label:'🌞 Lunch',cls:'b-lunch'},
+};
+let activeFilter='all',searchQ='';
+function renderMenu(){
+  const root=document.getElementById('menu-root');
+  const empty=document.getElementById('menu-empty');
+  const counter=document.getElementById('result-count');
+  root.innerHTML='';
+  const filtered=MENU.filter(i=>{
+    const mf=activeFilter==='all'||i.cat===activeFilter;
+    const ms=!searchQ||i.name.toLowerCase().includes(searchQ)||i.desc.toLowerCase().includes(searchQ);
+    return mf&&ms;
+  });
+  counter.textContent=filtered.length?`${filtered.length} items`:'';
+  if(!filtered.length){empty.style.display='block';return}
+  empty.style.display='none';
+  const groups={};
+  filtered.forEach(i=>{if(!groups[i.cat])groups[i.cat]=[];groups[i.cat].push(i);});
+  CAT_ORDER.forEach(cat=>{
+    if(!groups[cat])return;
+    const cfg=CAT_CONFIG[cat];
+    const sec=document.createElement('div');
+    sec.className='cat-section';
+    const hdr=document.createElement('div');
+    hdr.className='cat-header';
+    const t=document.createElement('h3');
+    t.className='cat-title';
+    t.textContent=cfg.label;
+    const n=document.createElement('span');
+    n.className='cat-note';
+    n.textContent=`${groups[cat].length} items`;
+    hdr.appendChild(t);hdr.appendChild(n);
+    sec.appendChild(hdr);
+    const hr=document.createElement('hr');
+    hr.className='cat-divider';
+    sec.appendChild(hr);
+    if(cfg.sub){const s=document.createElement('p');s.className='cat-sub';s.textContent=cfg.sub;sec.appendChild(s);}
+    const grid=document.createElement('div');
+    grid.className='cards-grid';
+    groups[cat].forEach((item,i)=>{
+      const card=document.createElement('article');
+      card.className='menu-card';
+      card.style.animationDelay=`${Math.min(i,15)*0.035}s`;
+      const top=document.createElement('div');top.className='card-top';
+      const nm=document.createElement('p');nm.className='card-name';nm.textContent=item.name;
+      const pr=document.createElement('p');pr.className='card-price';pr.textContent=item.price;
+      top.appendChild(nm);top.appendChild(pr);card.appendChild(top);
+      if(item.desc){const d=document.createElement('p');d.className='card-desc';d.textContent=item.desc;card.appendChild(d);}
+      if(item.badges.length){
+        const bd=document.createElement('div');bd.className='badges';
+        item.badges.forEach(b=>{const c=BADGE_CFG[b];if(!c)return;const s=document.createElement('span');s.className=`badge ${c.cls}`;s.textContent=c.label;bd.appendChild(s);});
+        card.appendChild(bd);
+      }
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+    root.appendChild(sec);
+  });
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter=btn.dataset.filter;
+    renderMenu();
+    document.getElementById('menu').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+document.getElementById('search').addEventListener('input',e=>{
+  searchQ=e.target.value.toLowerCase().trim();
+  renderMenu();
+});
+renderMenu();
+
+// ═══════════════════════════════════════════
+//  HOURS TABLE
+// ═══════════════════════════════════════════
+document.querySelectorAll('#hours-table tr').forEach(tr=>{
+  if(parseInt(tr.dataset.day)===new Date().getDay())tr.classList.add('today');
+});
+
+// ═══════════════════════════════════════════
+//  RESERVATION FORM
+// ═══════════════════════════════════════════
+const dateIn=document.getElementById('res-date');
+if(dateIn){const today=new Date();today.setDate(today.getDate()+1);dateIn.min=today.toISOString().split('T')[0];}
+function submitReservation(){
+  const name=document.getElementById('res-name').value.trim();
+  const phone=document.getElementById('res-phone').value.trim();
+  const date=document.getElementById('res-date').value;
+  const time=document.getElementById('res-time').value;
+  const size=document.getElementById('res-size').value;
+  if(!name||!phone||!date||!time||!size){
+    alert('Please fill in your name, phone, date, time, and party size.');return;
+  }
+  document.getElementById('res-success').style.display='block';
+  document.querySelectorAll('.form-group,.form-submit,.res-or,.res-phone').forEach(el=>el.style.opacity='0.3');
+}
+
+// ═══════════════════════════════════════════
+//  LOYALTY PUNCHES
+// ═══════════════════════════════════════════
+let punches=3;
+function buildPunches(){
+  const grid=document.getElementById('punch-grid');
+  grid.innerHTML='';
+  for(let i=0;i<10;i++){
+    const p=document.createElement('div');
+    p.className='punch'+(i<punches?' filled':'');
+    p.textContent=i<punches?'🍣':'';
+    p.onclick=()=>{if(i===punches&&punches<10){punches++;buildPunches();}};
+    grid.appendChild(p);
+  }
+  const txt=document.getElementById('loyalty-cta-text');
+  if(punches>=10){txt.textContent='🎉 Free roll earned! Show this to your server.';}
+  else{txt.textContent=`${10-punches} more visit${10-punches!==1?'s':''} until your free signature roll!`;}
+}
+buildPunches();
+function joinLoyalty(){
+  const ph=document.getElementById('loyalty-phone').value.trim();
+  if(!ph){alert('Please enter your phone number.');return;}
+  document.getElementById('loyalty-success').style.display='block';
+  document.querySelector('.loyalty-form').style.opacity='0.4';
+  document.querySelector('.loyalty-form').style.pointerEvents='none';
+}
+
+// ═══════════════════════════════════════════
+//  AI CHAT
+// ═══════════════════════════════════════════
+let chatOpen=false;
+const MENU_CONTEXT=`You are Oishii Restaurant's friendly AI concierge in Camden, Delaware. You know the full menu below. Always be warm, helpful, and specific — recommend exact dishes with prices. Keep replies concise (2-4 sentences max).
+
+HOURS: Mon–Thu 11am–9pm, Fri–Sat 11am–9:30pm, Sun 12pm–8:30pm. Lunch specials Mon–Sat 11am–2:30pm.
+PHONE: (302) 286-9999. ADDRESS: 386 Walmart Dr #1, Camden, DE. Pickup & dine-in. Cash, Apple Pay, cards accepted.
+
+SAMPLE MENU HIGHLIGHTS:
+- Lunch specials from $12.95–$18.95 (rolls, hibachi, sashimi)
+- Classic rolls: $6–$16 (California $7, Spicy Tuna $7.50, Rainbow $14, Spider $15)
+- Creative rolls: $13–$40 (Camden Dream $15, Godzilla $15, Volcano $16, A5 Wagyu $40, Out of Control $19)
+- Sashimi à la carte: $2.50–$10 per piece (Fatty Tuna/Toro $8, Chu Toro w Caviar $10)
+- Sushi entrees: Sushi Dinner $30, Sashimi Dinner $38, Omakase Premium $68
+- Hibachi: Chicken $19.95, Shrimp $24.95, Steak $26.95, Lobster $35.95, combos available
+- Teriyaki: Chicken $19.95, Salmon/Steak $26.95
+- Appetizers: Gyoza $8.95, Crispy Rice $15, Spicy Tuna Pizza $16, A5 Wagyu App $22
+- Dessert: Mochi $7.95, Fried Ice Cream $9.95
+- Drinks: Japanese Soda $5, Thai Tea $6
+
+Vegetarian options: Cucumber Roll, Avocado Roll, Forest Roll, Edamame, Miso Soup, Veggie Hibachi, Tofu Teriyaki.
+Spicy options: Spicy Tuna/Salmon/Yellowtail rolls, Godzilla, Volcano, Fire Dragon, Red Sea, Camden Dream, Crispy Rice.
+For groups: Sushi & Sashimi Combo for 2 ($70), Hibachi combos, Omakase Premium ($68).
+Best value: Lunch specials, Any 2 Rolls ($12.95), Any 3 Rolls ($16.95).`;
+
+let chatHistory=[];
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-panel').classList.toggle('open',chatOpen);
+  document.getElementById('chat-tooltip').style.display='none';
+  if(chatOpen)setTimeout(()=>document.getElementById('chat-input').focus(),300);
+}
+function addMsg(text,role){
+  const msgs=document.getElementById('chat-messages');
+  const div=document.createElement('div');
+  div.className=`msg msg-${role==='user'?'user':'bot'}`;
+  const now=new Date();
+  const time=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  div.innerHTML=`<div class="msg-bubble">${text}</div><div class="msg-time">${time}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+async function sendChat(){
+  const inp=document.getElementById('chat-input');
+  const text=inp.value.trim();
+  if(!text)return;
+  inp.value='';
+  addMsg(text,'user');
+  chatHistory.push({role:'user',content:text});
+  const typing=document.getElementById('chat-typing');
+  typing.style.display='block';
+  document.getElementById('chat-messages').scrollTop=9999;
+  document.getElementById('chat-suggestions').style.display='none';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:MENU_CONTEXT,
+        messages:chatHistory,
+      })
+    });
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||"Sorry, I'm having trouble right now. Please call us at (302) 286-9999!";
+    typing.style.display='none';
+    addMsg(reply,'bot');
+    chatHistory.push({role:'assistant',content:reply});
+  }catch(e){
+    typing.style.display='none';
+    addMsg("Sorry, I'm having trouble connecting. Please call us at (302) 286-9999 and we'll help you directly!","bot");
+  }
+}
+function sendSuggestion(btn){
+  document.getElementById('chat-input').value=btn.textContent.replace(/[🌶️🥬⭐💰🎉]/gu,'').trim();
+  sendChat();
+}
+
+// ═══ LIGHTBOX ═══
+const PHOTOS = [['https://www.oishiisushihibachi.com/images/gallery/sushi-platter-01.jpg', 'Sushi platter'], ['https://www.oishiisushihibachi.com/images/gallery/salmon-sashimi-03.jpg', 'Salmon sashimi'], ['https://www.oishiisushihibachi.com/images/gallery/restaurant-interior-04.jpg', 'Restaurant interior'], ['https://www.oishiisushihibachi.com/images/gallery/dragon-roll-05.jpg', 'Dragon roll'], ['https://www.oishiisushihibachi.com/images/gallery/chef-preparation-06.jpg', 'Chef at work'], ['https://www.oishiisushihibachi.com/images/gallery/bento-box-07.jpg', 'Bento box'], ['https://www.oishiisushihibachi.com/images/gallery/sake-service-09.jpg', 'Sake service'], ['https://www.oishiisushihibachi.com/images/gallery/tempura-platter-10.jpg', 'Tempura platter'], ['https://www.oishiisushihibachi.com/images/gallery/sushi-bar-11.jpg', 'Sushi bar'], ['https://www.oishiisushihibachi.com/images/gallery/restaurant-reception-13.jpg', 'Reception area'], ['https://www.oishiisushihibachi.com/images/gallery/sushi-party-boxes-14.jpg', 'Party sushi boxes'], ['https://www.oishiisushihibachi.com/images/gallery/fresh-nigiri-15.jpg', 'Fresh nigiri'], ['https://www.oishiisushihibachi.com/images/gallery/sushi-takeout-16.jpg', 'Sushi takeout'], ['https://www.oishiisushihibachi.com/images/gallery/dining-room-17.jpg', 'Dining room']];
+let lbIdx = 0;
+function openLightbox(i) {
+  lbIdx = i;
+  document.getElementById('lightbox').classList.add('open');
+  updateLightbox();
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbStep(dir) {
+  lbIdx = (lbIdx + dir + PHOTOS.length) % PHOTOS.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  const img = document.getElementById('lightbox-img');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = PHOTOS[lbIdx][0];
+    img.alt = PHOTOS[lbIdx][1];
+    document.getElementById('lightbox-caption').textContent = PHOTOS[lbIdx][1];
+    document.getElementById('lightbox-counter').textContent = `${lbIdx + 1} / ${PHOTOS.length}`;
+    img.style.opacity = '1';
+  }, 120);
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'ArrowRight') lbStep(1);
+});
+
+</script>
+</body>
+</html>
